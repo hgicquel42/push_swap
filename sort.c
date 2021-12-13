@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:11:42 by hgicquel          #+#    #+#             */
-/*   Updated: 2021/12/13 16:48:52 by hgicquel         ###   ########.fr       */
+/*   Updated: 2021/12/13 18:23:13 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,20 +57,14 @@ void	sort_ab(t_stack *a, t_stack *b)
 	smart_rotate_a(a, b, 0);
 }
 
-void	sort_small(t_stack *a, t_stack *b)
-{
-	if (a->top == 1)
-		op_swap_a(a, b);
-	if (a->top == 2)
-		sort_a(a, b);
-	if (a->top > 2)
-		sort_ab(a, b);
-}
-
 void	sort(t_stack *a, t_stack *b)
 {
 	if (is_sorted(a))
 		return ;
-	if (a->top < 5)
-		sort_small(a, b);
+	if (a->top == 1)
+		op_swap_a(a, b);
+	else if (a->top == 2)
+		sort_a(a, b);
+	else if (a->top < 5)
+		sort_ab(a, b);
 }

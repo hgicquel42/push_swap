@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   indexer.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 15:27:41 by hgicquel          #+#    #+#             */
-/*   Updated: 2021/12/13 18:23:55 by hgicquel         ###   ########.fr       */
+/*   Created: 2021/12/13 18:32:52 by hgicquel          #+#    #+#             */
+/*   Updated: 2021/12/13 18:38:36 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	op_push(t_stack *src, t_stack *dst)
+void	index(t_stack *stack)
 {
-	if (src->top != -1)
-		push(dst, shift(src));
-}
-
-void	op_push_a(t_stack *a, t_stack *b)
-{
-	ft_putstr("pa\n");
-	op_push(b, a);
-	print(a);
-}
-
-void	op_push_b(t_stack *a, t_stack *b)
-{
-	ft_putstr("pb\n");
-	op_push(a, b);
-	print(a);
+	return ;
 }

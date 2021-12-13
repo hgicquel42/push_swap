@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:05:32 by hgicquel          #+#    #+#             */
-/*   Updated: 2021/12/13 15:24:41 by hgicquel         ###   ########.fr       */
+/*   Updated: 2021/12/13 18:00:16 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	push(t_stack *s, int x)
 
 int	shift(t_stack *s)
 {
-	return (s->array[--s->top]);
+	return (s->array[s->top--]);
 }
 
 void	swap(t_stack *s, unsigned int i, unsigned int j)
