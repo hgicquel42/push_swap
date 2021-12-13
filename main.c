@@ -6,11 +6,20 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:37:12 by hgicquel          #+#    #+#             */
-/*   Updated: 2021/12/13 13:54:44 by hgicquel         ###   ########.fr       */
+/*   Updated: 2021/12/13 15:19:18 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	print(t_stack *s)
+{
+	int	i;
+
+	i = 0;
+	while (i < s->top + 1)
+		printf("%d\n", s->array[i++]);
+}
 
 bool	try_push(t_stack *s, int x)
 {
