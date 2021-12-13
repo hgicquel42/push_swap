@@ -10,6 +10,7 @@ INPUT = \
 	rotate.c \
 	rrotate.c \
 	smart.c \
+	minmax.c \
 
 OUTPUT = ${INPUT:.c=.o}
 

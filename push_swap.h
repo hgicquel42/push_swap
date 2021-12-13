@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:37:22 by hgicquel          #+#    #+#             */
-/*   Updated: 2021/12/13 16:34:03 by hgicquel         ###   ########.fr       */
+/*   Updated: 2021/12/13 16:46:02 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct s_stack
 int		ft_atoi(char *s);
 
 int		ft_putstr(char *s);
+
+bool	is_sorted(t_stack *s);
 
 bool	init(t_stack *s, unsigned int l);
 
@@ -74,5 +76,9 @@ int		closest_below(t_stack *s, int n);
 void	smart_rotate_a(t_stack *a, t_stack *b, int n);
 
 void	smart_rotate_b(t_stack *a, t_stack *b, int n);
+
+int		max(t_stack *s);
+
+int		min(t_stack *s);
 
 #endif
