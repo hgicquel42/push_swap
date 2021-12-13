@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:37:12 by hgicquel          #+#    #+#             */
-/*   Updated: 2021/12/13 15:19:18 by hgicquel         ###   ########.fr       */
+/*   Updated: 2021/12/13 16:12:49 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	print(t_stack *s)
 
 	i = 0;
 	while (i < s->top + 1)
-		printf("%d\n", s->array[i++]);
+		printf("%d ", s->array[i++]);
+	printf("\n");
 }
 
 bool	try_push(t_stack *s, int x)
@@ -72,6 +73,7 @@ int	main(int argc, char **argv)
 	if (e)
 		return (ft_error2(&a, &b));
 	reverse(&a);
+	sort(&a, &b);
 	print(&a);
 	return (0);
 }

@@ -5,7 +5,11 @@ INPUT = \
 	sort.c \
 	utils.c \
 	stack.c \
-	runops.c \
+	swap.c \
+	push.c \
+	rotate.c \
+	rrotate.c \
+	smart.c \
 
 OUTPUT = ${INPUT:.c=.o}
 

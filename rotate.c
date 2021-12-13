@@ -1,40 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 15:28:52 by hgicquel          #+#    #+#             */
-/*   Updated: 2021/12/13 16:24:46 by hgicquel         ###   ########.fr       */
+/*   Created: 2021/12/13 16:02:23 by hgicquel          #+#    #+#             */
+/*   Updated: 2021/12/13 16:25:22 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	op_swap(t_stack *s)
+void	op_rotate(t_stack *s)
 {
-	if (s->top != -1)
-		swap(s, s->top, s->top - 1);
+	int	i;
+	int	tmp;
+
+	i = s->top + 1;
+	tmp = s->array[s->top];
+	while (--i)
+		s->array[i] = s->array[i - 1];
+	s->array[0] = tmp;
 }
 
-void	op_swap_a(t_stack *a, t_stack *b)
+void	op_rotate_a(t_stack *a, t_stack *b)
 {
 	(void)b;
-	ft_putstr("sa\n");
-	op_swap(a);
+	ft_putstr("ra\n");
+	op_rotate(a);
 }
 
-void	op_swap_b(t_stack *a, t_stack *b)
+void	op_rotate_b(t_stack *a, t_stack *b)
 {
 	(void)a;
-	ft_putstr("sb\n");
-	op_swap(b);
+	ft_putstr("rb\n");
+	op_rotate(b);
 }
 
-void	op_swap_s(t_stack *a, t_stack *b)
+void	op_rotate_r(t_stack *a, t_stack *b)
 {
-	ft_putstr("ss\n");
-	op_swap(a);
-	op_swap(b);
+	ft_putstr("rr\n");
+	op_rotate(a);
+	op_rotate(b);
 }

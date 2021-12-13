@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:37:22 by hgicquel          #+#    #+#             */
-/*   Updated: 2021/12/13 15:29:29 by hgicquel         ###   ########.fr       */
+/*   Updated: 2021/12/13 16:34:03 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,38 @@ void	reverse(t_stack *s);
 
 void	print(t_stack *s);
 
+void	sort(t_stack *a, t_stack *b);
+
 void	op_push_a(t_stack *a, t_stack *b);
 
 void	op_push_b(t_stack *a, t_stack *b);
 
-void	op_swap_a(t_stack *a);
+void	op_swap_a(t_stack *a, t_stack *b);
 
-void	op_swap_b(t_stack *b);
+void	op_swap_b(t_stack *a, t_stack *b);
 
 void	op_swap_s(t_stack *a, t_stack *b);
+
+void	op_rotate_a(t_stack *a, t_stack *b);
+
+void	op_rotate_b(t_stack *a, t_stack *b);
+
+void	op_rotate_r(t_stack *a, t_stack *b);
+
+void	op_reverse_rotate_a(t_stack *a, t_stack *b);
+
+void	op_reverse_rotate_b(t_stack *a, t_stack *b);
+
+void	op_reverse_rotate_r(t_stack *a, t_stack *b);
+
+void	op_loop(t_stack *a, t_stack *b, void (f(t_stack*, t_stack*)), int n);
+
+int		closest_above(t_stack *s, int n);
+
+int		closest_below(t_stack *s, int n);
+
+void	smart_rotate_a(t_stack *a, t_stack *b, int n);
+
+void	smart_rotate_b(t_stack *a, t_stack *b, int n);
 
 #endif
