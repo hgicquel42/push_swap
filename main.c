@@ -6,78 +6,12 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:37:12 by hgicquel          #+#    #+#             */
-/*   Updated: 2021/12/10 18:19:25 by hgicquel         ###   ########.fr       */
+/*   Updated: 2021/12/13 13:54:44 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(char *s)
-{
-	int	x;
-	int	n;
-
-	x = 0;
-	n = 1;
-	if (*s == '-' || *s == '+')
-		if(*s++ == '-')
-			n = -1;
-	while (*s >= '0' && *s <= '9')
-		x = (x * 10) + n * (*s++ - '0');
-	return (x);
-}
-
-/**
- * 	Push x to the top
- **/
-void	push(t_stack *s, int x)
-{
-	s->array[s->top++] = x;
-}
-
-void	swap(t_stack *s, int i, int j)
-{
-	uint	t;
-
-	t = s->array[i];
-	s->array[i] = s->array[j];
-	s->array[j] = t;
-}
-
-void	reverse(t_stack *s)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	j = s->top - 1;
-	while (i < j)
-		swap(s, i++, j--);
-}
-
-/**
- * Init the stack
- **/
-bool	init(t_stack *s, uint l)
-{
-	s->size = l;
-	s->top = 0;
-	s->array = malloc(l * sizeof(int *));
-	if (!s->array)
-		return (0);
-	return (1);
-}
-
-int	ft_error(t_stack *s)
-{
-	if (s->array)
-		free(s->array);
-	return (1);
-}
-
-/**
- *	Check if x already exists before pushing 
- **/
 bool	try_push(t_stack *s, int x)
 {
 	int	i;
@@ -90,33 +24,45 @@ bool	try_push(t_stack *s, int x)
 	return (1);
 }
 
-void	print(t_stack *s)
+void	ft_free(t_stack *s)
 {
-	int	i;
+	if (s->array)
+		free(s->array);
+}
 
-	i = 0;
-	while (i < s->top)
-		printf("%d\n", s->array[i++]);
+int	ft_error1(t_stack *s)
+{
+	ft_free(s);
+	return (1);
+}
+
+int	ft_error2(t_stack *a, t_stack *b)
+{
+	ft_free(a);
+	ft_free(b);
+	return (1);
 }
 
 int	main(int argc, char **argv)
 {
-	t_stack	s;
-	int		i;
-	bool	e;
+	t_stack			a;
+	t_stack			b;
+	int				i;
+	bool			e;
 
 	if (argc == 1)
 		return (1);
-	if(!init(&s, argc - 1))
+	if (!init(&a, argc - 1 * 2))
 		return (1);
+	if (!init(&b, argc - 1 * 2))
+		return (ft_error1(&a));
 	e = 0;
 	i = 1;
 	while (i < argc)
-		e += !try_push(&s, ft_atoi(argv[i++]));
+		e += !try_push(&a, ft_atoi(argv[i++]));
 	if (e)
-		return (ft_error(&s));
-	reverse(&s);
-	print(&s);
-	free(s.array);
+		return (ft_error2(&a, &b));
+	reverse(&a);
+	print(&a);
 	return (0);
 }

@@ -2,6 +2,10 @@ NAME = push_swap
 
 INPUT = \
 	main.c \
+	sort.c \
+	utils.c \
+	stack.c \
+	runops.c \
 
 OUTPUT = ${INPUT:.c=.o}
 
