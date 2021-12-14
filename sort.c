@@ -6,13 +6,13 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:11:42 by hgicquel          #+#    #+#             */
-/*   Updated: 2021/12/14 11:41:36 by hgicquel         ###   ########.fr       */
+/*   Updated: 2021/12/14 15:46:35 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_a(t_stack *a, t_stack *b)
+void	sort3(t_stack *a, t_stack *b)
 {
 	int	*p;
 
@@ -35,25 +35,59 @@ void	sort_a(t_stack *a, t_stack *b)
 	}
 }
 
-void	sort_ab(t_stack *a, t_stack *b)
+void	sort4(t_stack *a, t_stack *b)
 {
-	op_loop(a, b, op_push_b, a->top - 2);
-	sort_a(a, b);
-	while (b->top >= 0)
-		put_top_in_position(a, b);
-	smart_rotate_a(a, b, 0);
-}	
+	push_min_to_b(a, b);
+	sort3(a, b);
+	op_push_a(a, b);
+}
 
-void	sort(t_stack *a, t_stack *b)
+void	sort5(t_stack *a, t_stack *b)
 {
-	if (is_sorted(a))
-		return ;
-	if (a->top == 1)
+	push_min_to_b(a, b);
+	push_min_to_b(a, b);
+	sort3(a, b);
+	op_push_a(a, b);
+	op_push_a(a, b);
+}
+
+void	sortr(t_stack *a, t_stack *b)
+{
+	int	i;
+	int	j;
+	int	n;
+	int	x;
+
+	n = ft_bytes(a->top);
+	i = 0;
+	while (i < n)
+	{
+		j = 0;
+		while (j < (int) a->size)
+		{
+			x = a->array[a->top];
+			if (((x >> i) & 1) == 1)
+				op_rotate_a(a, b);
+			else
+				op_push_b(a, b);
+			j++;
+		}
+		while (b->top + 1)
+			op_push_a(a, b);
+		i++;
+	}
+}
+
+void	sortn(t_stack *a, t_stack *b)
+{
+	if (a->top + 1 == 2)
 		op_swap_a(a, b);
-	else if (a->top == 2)
-		sort_a(a, b);
-	else if (a->top < 5)
-		sort_ab(a, b);
-		else
-		sort_chunks(a, b);
+	if (a->top + 1 == 3)
+		sort3(a, b);
+	if (a->top + 1 == 4)
+		sort4(a, b);
+	if (a->top + 1 == 5)
+		sort5(a, b);
+	else
+		sortr(a, b);
 }

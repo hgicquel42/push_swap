@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 16:02:23 by hgicquel          #+#    #+#             */
-/*   Updated: 2021/12/13 18:24:34 by hgicquel         ###   ########.fr       */
+/*   Updated: 2021/12/14 15:11:53 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	op_rotate_a(t_stack *a, t_stack *b)
 	(void)b;
 	ft_putstr("ra\n");
 	op_rotate(a);
-	print(a);
+	print(a, b);
 }
 
 void	op_rotate_b(t_stack *a, t_stack *b)
@@ -37,7 +37,7 @@ void	op_rotate_b(t_stack *a, t_stack *b)
 	(void)a;
 	ft_putstr("rb\n");
 	op_rotate(b);
-	print(a);
+	print(a, b);
 }
 
 void	op_rotate_r(t_stack *a, t_stack *b)
@@ -45,5 +45,5 @@ void	op_rotate_r(t_stack *a, t_stack *b)
 	ft_putstr("rr\n");
 	op_rotate(a);
 	op_rotate(b);
-	print(a);
+	print(a, b);
 }

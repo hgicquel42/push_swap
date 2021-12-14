@@ -6,42 +6,34 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 16:42:24 by hgicquel          #+#    #+#             */
-/*   Updated: 2021/12/14 11:49:41 by hgicquel         ###   ########.fr       */
+/*   Updated: 2021/12/14 15:29:13 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	rmax(int *p, size_t l)
+int	find_min(t_stack *s)
 {
+	int	i;
 	int	m;
 
-	if (l == 1)
-		return (p[0]);
-	m = rmax(p, l - 1);
-	if (p[l - 1] > m)
-		m = p[l - 1];
+	i = 0;
+	m = 0;
+	while (++i < s->top + 1)
+		if (s->array[i] < s->array[m])
+			m = i;
 	return (m);
 }
 
 int	find_max(t_stack *s)
 {
-	return (rmax(s->array, s->top + 1));
-}
-
-int	rmin(int *p, size_t l)
-{
+	int	i;
 	int	m;
 
-	if (l == 1)
-		return (p[0]);
-	m = rmin(p, l - 1);
-	if (p[l - 1] < m)
-		m = p[l - 1];
+	i = 0;
+	m = 0;
+	while (++i < s->top + 1)
+		if (s->array[i] > s->array[m])
+			m = i;
 	return (m);
-}
-
-int	find_min(t_stack *s)
-{
-	return (rmin(s->array, s->top + 1));
 }

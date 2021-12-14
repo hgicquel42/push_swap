@@ -6,13 +6,13 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:05:32 by hgicquel          #+#    #+#             */
-/*   Updated: 2021/12/13 18:00:16 by hgicquel         ###   ########.fr       */
+/*   Updated: 2021/12/14 15:36:06 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-bool	init(t_stack *s, unsigned int l)
+bool	init(t_stack *s, int l)
 {
 	s->size = l;
 	s->top = -1;

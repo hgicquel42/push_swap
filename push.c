@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 15:27:41 by hgicquel          #+#    #+#             */
-/*   Updated: 2021/12/13 18:23:55 by hgicquel         ###   ########.fr       */
+/*   Updated: 2021/12/14 15:13:33 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ void	op_push_a(t_stack *a, t_stack *b)
 {
 	ft_putstr("pa\n");
 	op_push(b, a);
-	print(a);
+	print(a, b);
 }
 
 void	op_push_b(t_stack *a, t_stack *b)
 {
 	ft_putstr("pb\n");
 	op_push(a, b);
-	print(a);
+	print(a, b);
 }

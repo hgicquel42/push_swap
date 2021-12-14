@@ -6,20 +6,30 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:37:12 by hgicquel          #+#    #+#             */
-/*   Updated: 2021/12/14 11:02:30 by hgicquel         ###   ########.fr       */
+/*   Updated: 2021/12/14 15:35:22 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print(t_stack *s)
-{
-	int	i;
+// void	print(t_stack *a, t_stack *b)
+// {
+// 	int	i;
 
-	i = 0;
-	while (i < s->top + 1)
-		printf("%d ", s->array[i++]);
-	printf("\n");
+// 	i = 0;
+// 	while (i < a->top + 1)
+// 		printf("%d ", a->array[i++]);
+// 	printf("\n");
+// 	i = 0;
+// 	while (i < b->top + 1)
+// 		printf("%d ", b->array[i++]);
+// 	printf("\n");
+// }
+
+void	print(t_stack *a, t_stack *b)
+{
+	(void)a;
+	(void)b;
 }
 
 bool	try_push(t_stack *s, int x)
@@ -34,22 +44,31 @@ bool	try_push(t_stack *s, int x)
 	return (1);
 }
 
-void	ft_free(t_stack *s)
+int	ft_free(t_stack *s)
 {
 	if (s->array)
 		free(s->array);
+	return (0);
 }
 
-int	ft_error1(t_stack *s)
+bool	run(int argc, char **argv, t_stack *a, t_stack *b)
 {
-	ft_free(s);
-	return (1);
-}
+	int		i;
+	bool	e;
 
-int	ft_error2(t_stack *a, t_stack *b)
-{
-	ft_free(a);
-	ft_free(b);
+	e = 0;
+	i = 1;
+	while (i < argc)
+		e += !try_push(a, ft_atoi(argv[i++]));
+	if (e)
+		return (1);
+	reverse(a);
+	if (!reindex(a))
+		return (0);
+	if (is_sorted(a))
+		return (1);
+	print(a, b);
+	sortn(a, b);
 	return (1);
 }
 
@@ -57,25 +76,16 @@ int	main(int argc, char **argv)
 {
 	t_stack			a;
 	t_stack			b;
-	int				i;
-	bool			e;
+	bool			r;
 
 	if (argc == 1)
 		return (1);
-	if (!init(&a, argc - 1 * 2))
+	if (!init(&a, argc - 1))
 		return (1);
-	if (!init(&b, argc - 1 * 2))
-		return (ft_error1(&a));
-	e = 0;
-	i = 1;
-	while (i < argc)
-		e += !try_push(&a, ft_atoi(argv[i++]));
-	if (e)
-		return (ft_error2(&a, &b));
-	reverse(&a);
-	if (!reindex(&a))
-		return (ft_error2(&a, &b));
-	sort(&a, &b);
-	print(&a);
-	return (0);
+	if (!init(&b, argc - 1))
+		return (1 + ft_free(&a));
+	r = run(argc, argv, &a, &b);
+	ft_free(&a);
+	ft_free(&b);
+	return (!r);
 }
