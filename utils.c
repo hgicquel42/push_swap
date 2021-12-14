@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:04:50 by hgicquel          #+#    #+#             */
-/*   Updated: 2021/12/14 15:30:33 by hgicquel         ###   ########.fr       */
+/*   Updated: 2021/12/14 16:02:30 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int	ft_putstr(char *s)
 	return (i);
 }
 
-int	ft_atoi(char *s)
+bool	ft_satoi(char *s, int *r)
 {
-	int	x;
-	int	n;
+	long	x;
+	int		n;
 
 	x = 0;
 	n = 1;
@@ -34,8 +34,15 @@ int	ft_atoi(char *s)
 		if (*s++ == '-')
 			n = -1;
 	while (*s >= '0' && *s <= '9')
+	{
 		x = (x * 10) + n * (*s++ - '0');
-	return (x);
+		if (n == 1 && x >= 2147483647)
+			return (0);
+		if (n == -1 && x <= -2147483648)
+			return (0);
+	}
+	*r = (int) x;
+	return (1);
 }
 
 int	ft_bytes(int n)

@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:37:12 by hgicquel          #+#    #+#             */
-/*   Updated: 2021/12/14 15:35:22 by hgicquel         ###   ########.fr       */
+/*   Updated: 2021/12/14 16:01:59 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,27 @@ int	ft_free(t_stack *s)
 	return (0);
 }
 
+bool	parse(char *s, t_stack *a, t_stack *b)
+{
+	int	i;
+	int	r;
+
+	i = 0;
+	while (s[i])
+	{
+		while (s[i] == ' ')
+			i++;
+		if (!s[i])
+			break ;
+		if (!ft_satoi(s + i, &r))
+			return (0);
+		if (!try_push(a, r))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 bool	run(int argc, char **argv, t_stack *a, t_stack *b)
 {
 	int		i;
@@ -61,7 +82,7 @@ bool	run(int argc, char **argv, t_stack *a, t_stack *b)
 	while (i < argc)
 		e += !try_push(a, ft_atoi(argv[i++]));
 	if (e)
-		return (1);
+		return (0);
 	reverse(a);
 	if (!reindex(a))
 		return (0);
