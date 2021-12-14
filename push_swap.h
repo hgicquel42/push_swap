@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:37:22 by hgicquel          #+#    #+#             */
-/*   Updated: 2021/12/14 15:57:43 by hgicquel         ###   ########.fr       */
+/*   Updated: 2021/12/14 16:41:22 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ typedef struct s_stack
 int		ft_satoi(char *s, int *r);
 
 int		ft_putstr(char *s);
+
+int		ft_puterr(char *s);
+
+int		ft_free(t_stack *s);
 
 int		ft_bytes(int n);
 

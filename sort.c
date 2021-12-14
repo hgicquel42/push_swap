@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:11:42 by hgicquel          #+#    #+#             */
-/*   Updated: 2021/12/14 15:46:35 by hgicquel         ###   ########.fr       */
+/*   Updated: 2021/12/14 17:06:09 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,15 @@ void	sortr(t_stack *a, t_stack *b)
 	int	j;
 	int	n;
 	int	x;
+	int	l;
 
-	n = ft_bytes(a->top);
+	l = a->top + 1;
+	n = ft_bytes(l - 1);
 	i = 0;
 	while (i < n)
 	{
 		j = 0;
-		while (j < (int) a->size)
+		while (j < l)
 		{
 			x = a->array[a->top];
 			if (((x >> i) & 1) == 1)
@@ -82,11 +84,11 @@ void	sortn(t_stack *a, t_stack *b)
 {
 	if (a->top + 1 == 2)
 		op_swap_a(a, b);
-	if (a->top + 1 == 3)
+	else if (a->top + 1 == 3)
 		sort3(a, b);
-	if (a->top + 1 == 4)
+	else if (a->top + 1 == 4)
 		sort4(a, b);
-	if (a->top + 1 == 5)
+	else if (a->top + 1 == 5)
 		sort5(a, b);
 	else
 		sortr(a, b);

@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:37:12 by hgicquel          #+#    #+#             */
-/*   Updated: 2021/12/14 16:01:59 by hgicquel         ###   ########.fr       */
+/*   Updated: 2021/12/14 17:02:59 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,10 @@ bool	try_push(t_stack *s, int x)
 	return (1);
 }
 
-int	ft_free(t_stack *s)
-{
-	if (s->array)
-		free(s->array);
-	return (0);
-}
-
-bool	parse(char *s, t_stack *a, t_stack *b)
+bool	parse(char *s, t_stack *a)
 {
 	int	i;
+	int	j;
 	int	r;
 
 	i = 0;
@@ -63,11 +57,12 @@ bool	parse(char *s, t_stack *a, t_stack *b)
 			i++;
 		if (!s[i])
 			break ;
-		if (!ft_satoi(s + i, &r))
+		j = ft_satoi(s + i, &r);
+		if (!j)
 			return (0);
 		if (!try_push(a, r))
 			return (0);
-		i++;
+		i += j;
 	}
 	return (1);
 }
@@ -80,7 +75,7 @@ bool	run(int argc, char **argv, t_stack *a, t_stack *b)
 	e = 0;
 	i = 1;
 	while (i < argc)
-		e += !try_push(a, ft_atoi(argv[i++]));
+		e += !parse(argv[i++], a);
 	if (e)
 		return (0);
 	reverse(a);
@@ -100,13 +95,15 @@ int	main(int argc, char **argv)
 	bool			r;
 
 	if (argc == 1)
-		return (1);
-	if (!init(&a, argc - 1))
-		return (1);
-	if (!init(&b, argc - 1))
-		return (1 + ft_free(&a));
+		return (ft_puterr("Error\n"));
+	if (!init(&a, 1024))
+		return (ft_puterr("Error\n"));
+	if (!init(&b, 1024))
+		return (ft_puterr("Error\n") + ft_free(&a));
 	r = run(argc, argv, &a, &b);
+	if (!r)
+		return (ft_puterr("Error\n"));
 	ft_free(&a);
 	ft_free(&b);
-	return (!r);
+	return (0);
 }
