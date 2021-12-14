@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:37:12 by hgicquel          #+#    #+#             */
-/*   Updated: 2021/12/14 17:02:59 by hgicquel         ###   ########.fr       */
+/*   Updated: 2021/12/14 17:12:46 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	main(int argc, char **argv)
 	bool			r;
 
 	if (argc == 1)
-		return (ft_puterr("Error\n"));
+		return (1);
 	if (!init(&a, 1024))
 		return (ft_puterr("Error\n"));
 	if (!init(&b, 1024))
