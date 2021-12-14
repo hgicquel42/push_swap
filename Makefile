@@ -11,6 +11,10 @@ INPUT = \
 	rrotate.c \
 	smart.c \
 	minmax.c \
+	isort.c \
+	indexer.c \
+	chunks.c \
+	move.c \
 
 OUTPUT = ${INPUT:.c=.o}
 

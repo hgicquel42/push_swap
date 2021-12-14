@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:37:22 by hgicquel          #+#    #+#             */
-/*   Updated: 2021/12/13 16:46:02 by hgicquel         ###   ########.fr       */
+/*   Updated: 2021/12/14 11:51:26 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int		ft_putstr(char *s);
 
 bool	is_sorted(t_stack *s);
 
+void	insertion_sort(int *p, int n);
+
 bool	init(t_stack *s, unsigned int l);
 
 void	push(t_stack *s, int x);
@@ -44,6 +46,8 @@ void	reverse(t_stack *s);
 void	print(t_stack *s);
 
 void	sort(t_stack *a, t_stack *b);
+
+void	sort_chunks(t_stack *a, t_stack *b);
 
 void	op_push_a(t_stack *a, t_stack *b);
 
@@ -69,6 +73,8 @@ void	op_reverse_rotate_r(t_stack *a, t_stack *b);
 
 void	op_loop(t_stack *a, t_stack *b, void (f(t_stack*, t_stack*)), int n);
 
+void	put_top_in_position(t_stack *a, t_stack *b);
+
 int		closest_above(t_stack *s, int n);
 
 int		closest_below(t_stack *s, int n);
@@ -77,8 +83,14 @@ void	smart_rotate_a(t_stack *a, t_stack *b, int n);
 
 void	smart_rotate_b(t_stack *a, t_stack *b, int n);
 
-int		max(t_stack *s);
+int		find_max(t_stack *s);
 
-int		min(t_stack *s);
+int		find_min(t_stack *s);
+
+bool	reindex(t_stack *s);
+
+void	move(t_stack *a, t_stack *b, int min, int max);
+
+void	move_minmax(t_stack *a, t_stack *b);
 
 #endif

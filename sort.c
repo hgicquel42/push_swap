@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:11:42 by hgicquel          #+#    #+#             */
-/*   Updated: 2021/12/13 18:23:13 by hgicquel         ###   ########.fr       */
+/*   Updated: 2021/12/14 11:41:36 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,6 @@ void	sort_a(t_stack *a, t_stack *b)
 	}
 }
 
-void	put_top_in_position(t_stack *a, t_stack *b)
-{
-	int	top_b;
-	int	to_move;
-
-	top_b = b->array[b->top];
-	to_move = closest_above(a, top_b);
-	if (to_move == top_b)
-		to_move = min(a);
-	smart_rotate_a(a, b, to_move);
-	op_push_a(a, b);
-}
-
 void	sort_ab(t_stack *a, t_stack *b)
 {
 	op_loop(a, b, op_push_b, a->top - 2);
@@ -55,7 +42,7 @@ void	sort_ab(t_stack *a, t_stack *b)
 	while (b->top >= 0)
 		put_top_in_position(a, b);
 	smart_rotate_a(a, b, 0);
-}
+}	
 
 void	sort(t_stack *a, t_stack *b)
 {
@@ -67,4 +54,6 @@ void	sort(t_stack *a, t_stack *b)
 		sort_a(a, b);
 	else if (a->top < 5)
 		sort_ab(a, b);
+		else
+		sort_chunks(a, b);
 }

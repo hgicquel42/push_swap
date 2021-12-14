@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:37:12 by hgicquel          #+#    #+#             */
-/*   Updated: 2021/12/13 18:38:45 by hgicquel         ###   ########.fr       */
+/*   Updated: 2021/12/14 11:02:30 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ int	main(int argc, char **argv)
 	if (e)
 		return (ft_error2(&a, &b));
 	reverse(&a);
-	index(&a);
+	if (!reindex(&a))
+		return (ft_error2(&a, &b));
 	sort(&a, &b);
 	print(&a);
 	return (0);

@@ -1,47 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minmax.c                                           :+:      :+:    :+:   */
+/*   isort.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 16:42:24 by hgicquel          #+#    #+#             */
-/*   Updated: 2021/12/14 11:49:41 by hgicquel         ###   ########.fr       */
+/*   Created: 2021/12/14 10:38:36 by hgicquel          #+#    #+#             */
+/*   Updated: 2021/12/14 10:42:52 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	rmax(int *p, size_t l)
+bool	is_sorted(t_stack *s)
 {
-	int	m;
+	int	i;
 
-	if (l == 1)
-		return (p[0]);
-	m = rmax(p, l - 1);
-	if (p[l - 1] > m)
-		m = p[l - 1];
-	return (m);
+	i = -1;
+	while (++i < s->top)
+		if (s->array[i + 1] > s->array[i])
+			return (0);
+	return (1);
 }
 
-int	find_max(t_stack *s)
+void	insertion_sort(int *p, int n)
 {
-	return (rmax(s->array, s->top + 1));
-}
+	int	i;
+	int	j;
+	int	x;
 
-int	rmin(int *p, size_t l)
-{
-	int	m;
-
-	if (l == 1)
-		return (p[0]);
-	m = rmin(p, l - 1);
-	if (p[l - 1] < m)
-		m = p[l - 1];
-	return (m);
-}
-
-int	find_min(t_stack *s)
-{
-	return (rmin(s->array, s->top + 1));
+	i = 1;
+	while (i < n)
+	{
+		x = p[i];
+		j = i - 1;
+		while (j >= 0 && p[j] > x)
+		{
+			p[j + 1] = p[j];
+			j = j - 1;
+		}
+		p[j + 1] = x;
+		i++;
+	}
 }
